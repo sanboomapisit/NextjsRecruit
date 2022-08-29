@@ -11,8 +11,8 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Head>
         <title>E-recruit</title>
       </Head>
-      <Nav />
-      <div className="main-content">
+      {/* <Nav /> */}
+      <div>
         <Component {...pageProps} />
       </div>
     </>
