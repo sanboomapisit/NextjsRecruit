@@ -2,7 +2,7 @@ import React from "react";
 import Sidebar from "./Sidebar";
 
 type Props = {
-  children: JSX.Element;
+  children: JSX.Element
 };
 
 function Layout({ children }: Props) {

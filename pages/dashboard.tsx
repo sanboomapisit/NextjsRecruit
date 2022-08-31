@@ -3,8 +3,9 @@ import Layout from "../components/Layout";
 
 function dashboard() {
   return (
-    <Layout>
+    <Layout><>
       <div>dashboard</div>
+    </>
     </Layout>
   );
 }

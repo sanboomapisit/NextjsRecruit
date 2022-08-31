@@ -20,6 +20,7 @@ module.exports = {
         // navText: "#f3f4f6",
         hoverIcon: "#ffffff",
         notHoverIcon: "#999ea6",
+        light_green_500: "#8bc34a",
       },
       light: {
         DEFAULT: "#fafbfc",

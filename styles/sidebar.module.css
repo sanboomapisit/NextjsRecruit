@@ -1,1 +1,9 @@
-
+/* span.textFadeColor {
+  background: -webkit-linear-gradient(#1ba0d7, #002d3f) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  color: green !important;
+} */
+.hello {
+  color: green !important;
+}

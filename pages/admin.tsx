@@ -3,8 +3,10 @@ import Layout from "../components/Layout";
 
 function Admin() {
   return (
-    <Layout>
-      <div>dashboard</div>
+    <Layout><>
+      <div>admin</div>
+      <div className="text-lime-500">Hello Admin</div>
+    </>
     </Layout>
   );
 }

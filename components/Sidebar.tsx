@@ -13,6 +13,7 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 
 import "../styles/sidebar.module.css";
+import { red } from "@mui/material/colors";
 
 const menuItems = [
   {
@@ -66,8 +67,16 @@ function Sidebar() {
   };
 
   const getIconNavClasses = (menu: any) => {
-    return classNames("text-text-hoverIcon ", {
-      ["text-text-hoverIcon"]: activeMenu ? activeMenu.id === menu.id : "",
+    return classNames("text-text-hoverIcon group-hover:text-[green]", {
+      ["text-[green]"]: activeMenu ? activeMenu.id === menu.id : "",
+    });
+  };
+  // text-text-navText
+  const getLabelNavClasses = (menu: any) => {
+    return classNames("text-base font-medium  opacity-100 transition-opacity ease-in-out duration-500 group-hover:text-[green]", {
+      ["text-[green]"]: activeMenu ? activeMenu.id === menu.id : "",
+      ["opacity-0"]: toggleCollapse,
+
     });
   };
 
@@ -93,14 +102,14 @@ function Sidebar() {
           )}
         >
           <img
-            src="/images/logo_recruit.png"
+            src="/images/logo_ACC.png"
             alt="Icon AIS"
             height={65}
             width={65}
             className={classNames("block m-auto")}
           />
 
-          <div className={classNames("text-center")}>E-Recruitment</div>
+          <div className={classNames("text-center mt-2 text-lg")}>E-Recruitment</div>
         </div>
         <hr style={{ borderColor: "#c2c7d0" }} />
         <div className="flex items-center justify-between relative  my-4">
@@ -134,8 +143,9 @@ function Sidebar() {
           {menuItems.map(({ icon: Icon, ...menu }) => {
             const classes = getNavItemClasses(menu);
             const classesIcon = getIconNavClasses(menu);
+            const classesLabel = getLabelNavClasses(menu);
             return (
-              <div className={classes} key={menu.id}>
+              <div className={`${classes} group`} key={menu.id} >
                 <Link href={menu.link}>
                   <a
                     className={classNames(
@@ -147,12 +157,7 @@ function Sidebar() {
                     </div>
                     {!toggleCollapse && (
                       <span
-                        className={classNames(
-                          "text-base font-medium text-text-navText opacity-100 transition-opacity ease-in-out duration-500",
-                          {
-                            ["opacity-0"]: toggleCollapse,
-                          }
-                        )}
+                        className={`${classesLabel} hello`}
                       >
                         {menu.label}
                       </span>
