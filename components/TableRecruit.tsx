@@ -34,7 +34,7 @@ const rows = [
     { id: 5, prosonalID: '3334567890123', lastName: 'ทีมเอชอา', firstName: 'สิง', age: 92 },
 ];
 
-export default function DataTable() {
+export default function TableRecruit() {
     return (
         <div style={{ height: 400, width: '100%' }}>
             <DataGrid

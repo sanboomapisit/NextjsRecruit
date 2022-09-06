@@ -5,19 +5,33 @@ import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import EnhancedTableRecruiter from './TableRecruitter';
-import EnhancedTableRecruit from './TableRecruit';
-
+import TableEmployee from './TableEmployee';
+import TableRecruit from './TableRecruit';
+// import DataGridTable from './DataGridTable'
 
 
 const steps = ['Select recruiter', 'Select recruit', 'Escalate successful'];
 
+async function fetchData() {
+    const dataFetch = await fetch("https://jsonplaceholder.typicode.com/todos/").then(datas => { return datas.json() })
+    console.log("data fetch", dataFetch)
+    return dataFetch;
+}
+
 export default function HorizontalLinearStepper() {
+    React.useEffect(() => {
+        const datas = fetchData()
+        //   return () => {
+        //     second
+        //   }
+    }, [])
+
+
     const [activeStep, setActiveStep] = React.useState(0);
     const [skipped, setSkipped] = React.useState(new Set<number>());
 
     const isStepOptional = (step: number) => {
-        return step === 1;
+        return step === 0 || step === 1 || step === 2;
     };
 
     const isStepSkipped = (step: number) => {
@@ -68,7 +82,7 @@ export default function HorizontalLinearStepper() {
                     } = {};
                     if (isStepOptional(index)) {
                         labelProps.optional = (
-                            <Typography variant="caption">Optional</Typography>
+                            <Typography variant="caption">Optional คำอธิบาย</Typography>
                         );
                     }
                     if (isStepSkipped(index)) {
@@ -93,7 +107,13 @@ export default function HorizontalLinearStepper() {
                 </React.Fragment>
             ) : (
                 <React.Fragment>
-                    <Typography sx={{ mt: 2, mb: 1 }}>{activeStep + 1 === 1 && <EnhancedTableRecruiter />}{activeStep + 1 === 2 && <EnhancedTableRecruit />}</Typography>
+                    <div className='mt-10'>
+                        {/* <Typography sx={{ mt: 2, mb: 1 }}> */}
+                        {activeStep + 1 === 1 && <TableEmployee />}
+                        {activeStep + 1 === 2 && <TableRecruit />}
+                        {activeStep + 1 === 3 && <div>Hello 3 page</div>}
+                        {/* </Typography> */}
+                    </div>
                     <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
                         <Button
                             color="inherit"
@@ -104,11 +124,11 @@ export default function HorizontalLinearStepper() {
                             Back
                         </Button>
                         <Box sx={{ flex: '1 1 auto' }} />
-                        {isStepOptional(activeStep) && (
+                        {/* {isStepOptional(activeStep) && (
                             <Button color="inherit" onClick={handleSkip} sx={{ mr: 1 }}>
                                 Skip
                             </Button>
-                        )}
+                        )} */}
                         <Button onClick={handleNext}>
                             {activeStep === steps.length - 1 ? 'Finish' : 'Next'}
                         </Button>

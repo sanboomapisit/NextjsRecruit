@@ -14,5 +14,8 @@ function escalate() {
   );
 }
 
+function getStaticProps(){
+  
+}
 
 export default escalate;

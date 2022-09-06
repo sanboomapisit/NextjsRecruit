@@ -46,7 +46,7 @@ function Sidebar() {
   );
 
   const collapseIconClasses = classNames(
-    "p-4 rounded bg-red absolute right-0",
+    "p-1 rounded bg-red right-3 ",  //bg-red absolute right-0 
     {
       "rotate-180": toggleCollapse,
     }
